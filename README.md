@@ -1,6 +1,6 @@
 # Ensolvers
 
-This is project is about a folder creation to group to-do items with a previous login authentication.
+This is project is about folders creation to group to-do items with a previous login authentication.
 
 ![imagen](https://user-images.githubusercontent.com/39852288/141689549-95d05cf3-d588-435d-8ea3-d9e30c837feb.png)
 
