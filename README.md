@@ -10,7 +10,10 @@ This is project is about folders creation to group to-do items with previous log
 
 ## Live Version
 
-  [Ensolvers-Todo](https://ensolvers-frontend-todo.herokuapp.com/)
+  [Ensolvers-Todo](https://ensolvers-frontend-todo.herokuapp.com/)  
+  - Default Credentials
+    - `email: kevin@gmail.com`
+    - `password: passw0rd`
 
 ## Built With
 
