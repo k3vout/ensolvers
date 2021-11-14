@@ -1,6 +1,6 @@
 # Ensolvers
 
-This is project is about folders creation to group to-do items with a previous login authentication.
+This is project is about folders creation to group to-do items with previous login authentication.
 
 ![imagen](https://user-images.githubusercontent.com/39852288/141689549-95d05cf3-d588-435d-8ea3-d9e30c837feb.png)
 
@@ -51,7 +51,7 @@ This is project is about folders creation to group to-do items with a previous l
 
    #### Live Version
 
-   1. Login in live version with provided credentials and start creating your folders and tasks, but if you want to create your on user:
+   1. Login in live version with provided credentials and start creating your folders and tasks, but if you want to create your own user:
    
    Send a POST method to `https://ensolvers-backend-todo.herokuapp.com/api/v1/users`
    with the JSON body:
@@ -69,7 +69,7 @@ This is project is about folders creation to group to-do items with a previous l
 
 ## Acknowledgements
 
-- React Routes
+- React Router
 - Authentication with Rails
 - Styled Components
 - Rails database modeling
