@@ -1,7 +1,7 @@
-const baseApiUrl = "https://ensolvers-backend-todo.herokuapp.com/api/v1";
+const baseApiUrl = 'https://ensolvers-backend-todo.herokuapp.com/api/v1';
 
 const setToken = () => {
-  const loggedUser = window.localStorage.getItem("loggedUser");
+  const loggedUser = window.localStorage.getItem('loggedUser');
   if (loggedUser) {
     const user = JSON.parse(loggedUser);
     const config = {

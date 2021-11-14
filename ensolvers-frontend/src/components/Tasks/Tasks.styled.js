@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { theme } from "../../theme";
+import styled from 'styled-components';
+import theme from '../../theme';
 
 const StyledTasks = styled.section`
   margin: 4rem auto;

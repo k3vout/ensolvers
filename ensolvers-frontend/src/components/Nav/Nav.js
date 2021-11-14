@@ -1,24 +1,24 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import StyledNav from "./Nav.styled";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import StyledNav from './Nav.styled';
 
 const Nav = ({ logged, setLogged }) => {
   const logout = () => {
-    window.localStorage.removeItem("loggedUser");
+    window.localStorage.removeItem('loggedUser');
     setLogged(false);
   };
 
   return (
     <header>
       <StyledNav>
-        <ul className='nav-links'>
+        <ul className="nav-links">
           <li>
-            <Link to='/folders'>Folders</Link>
+            <Link to="/folders">Folders</Link>
           </li>
         </ul>
         {logged && (
           <button
-            type='button'
+            type="button"
             onClick={() => {
               logout();
             }}
