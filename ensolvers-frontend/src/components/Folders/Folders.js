@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { Link, Redirect } from 'react-router-dom';
-import axios from 'axios';
-import { baseApiUrl, setToken } from '../../utils/utils';
-import StyledFolders from './Folders.styled';
-import Message from '../Message/Message';
+import React, { useEffect, useState } from "react";
+import { Link, Redirect } from "react-router-dom";
+import axios from "axios";
+import { baseApiUrl, setToken } from "../../utils/utils";
+import StyledFolders from "./Folders.styled";
+import Message from "../Message/Message";
 
 const Folders = ({ logged }) => {
   const [folders, setFolders] = useState([]);
-  const [folder, setFolder] = useState('');
+  const [folder, setFolder] = useState("");
   const [message, setMessage] = useState(null);
   const [messageColor, setMessageColor] = useState(null);
 
@@ -22,7 +22,7 @@ const Folders = ({ logged }) => {
         .catch((e) => {
           console.log(e);
           setMessage("Folders couldn't be loaded");
-          setMessageColor('alert-error');
+          setMessageColor("alert-error");
           setTimeout(() => {
             setMessage(null);
             setMessageColor(null);
@@ -32,15 +32,15 @@ const Folders = ({ logged }) => {
   }, []);
 
   const addFolder = () => {
-    const newFolder = { title: folder, created_by: 'Kevin' };
+    const newFolder = { title: folder, created_by: "Kevin" };
     const config = setToken();
     axios
       .post(`${baseApiUrl}/folders`, newFolder, config)
       .then((res) => {
         setFolders(folders.concat(res.data));
-        setFolder('');
-        setMessage('Added Successfully');
-        setMessageColor('alert-success');
+        setFolder("");
+        setMessage("Added Successfully");
+        setMessageColor("alert-success");
         setTimeout(() => {
           setMessage(null);
           setMessageColor(null);
@@ -49,7 +49,7 @@ const Folders = ({ logged }) => {
       .catch((e) => {
         console.log(e);
         setMessage("Folder couldn't be added");
-        setMessageColor('alert-error');
+        setMessageColor("alert-error");
         setTimeout(() => {
           setMessage(null);
           setMessageColor(null);
@@ -63,10 +63,10 @@ const Folders = ({ logged }) => {
       .delete(`${baseApiUrl}/folders/${id}`, config)
       .then(() => {
         setFolders(
-          folders.filter((folder) => folder.id.toString() !== id.toString()),
+          folders.filter((folder) => folder.id.toString() !== id.toString())
         );
-        setMessage('Removed Succesfully');
-        setMessageColor('alert-success');
+        setMessage("Removed Succesfully");
+        setMessageColor("alert-success");
         setTimeout(() => {
           setMessage(null);
           setMessageColor(null);
@@ -75,7 +75,7 @@ const Folders = ({ logged }) => {
       .catch((e) => {
         console.log(e);
         setMessage("Folder couldn't be Removed");
-        setMessageColor('alert-error');
+        setMessageColor("alert-error");
         setTimeout(() => {
           setMessage(null);
           setMessageColor(null);
@@ -84,7 +84,7 @@ const Folders = ({ logged }) => {
   };
 
   if (logged === false) {
-    return <Redirect to="/login" />;
+    return <Redirect to='/login' />;
   }
 
   return (
@@ -106,7 +106,7 @@ const Folders = ({ logged }) => {
                   View items
                 </Link>
                 <button
-                  type="submit"
+                  type='submit'
                   onClick={() => {
                     removeFolder(folder.id);
                   }}
@@ -117,21 +117,21 @@ const Folders = ({ logged }) => {
             ))}
           </ul>
           <br />
-          <h4 className="add-folder-title">Add folder</h4>
-          <div className="add-folder">
+          <h4 className='add-folder-title'>Add folder</h4>
+          <div className='add-folder'>
             <input
-              type="text"
+              type='text'
               value={folder}
               onChange={(e) => {
                 setFolder(e.target.value);
               }}
               onKeyPress={(e) => {
-                if (e.key === 'Enter') {
+                if (e.key === "Enter") {
                   addFolder();
                 }
               }}
             />
-            <button type="submit" onClick={() => addFolder()}>
+            <button type='submit' onClick={() => addFolder()}>
               Add
             </button>
           </div>
