@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { Link, Redirect } from "react-router-dom";
-import axios from "axios";
-import { baseApiUrl, setToken } from "../../utils/utils";
-import StyledTasks from "./Tasks.styled";
-import Message from "../Message/Message";
+import React, { useEffect, useState } from 'react';
+import { Link, Redirect } from 'react-router-dom';
+import axios from 'axios';
+import { baseApiUrl, setToken } from '../../utils/utils';
+import StyledTasks from './Tasks.styled';
+import Message from '../Message/Message';
 
 const Tasks = ({ match, logged }) => {
   const [tasks, setTasks] = useState([]);
-  const [task, setTask] = useState("");
-  const [folder, setFolder] = useState("");
+  const [task, setTask] = useState('');
+  const [folder, setFolder] = useState('');
   const [message, setMessage] = useState(null);
   const [messageColor, setMessageColor] = useState(null);
 
@@ -17,7 +17,7 @@ const Tasks = ({ match, logged }) => {
     axios
       .get(
         `${baseApiUrl}/folders/${match.params.folderId.toString()}/tasks`,
-        config
+        config,
       )
       .then((res) => {
         setTasks(res.data);
@@ -25,7 +25,7 @@ const Tasks = ({ match, logged }) => {
       .catch((e) => {
         console.log(e);
         setMessage("Tasks couldn't be loaded");
-        setMessageColor("alert-error");
+        setMessageColor('alert-error');
         setTimeout(() => {
           setMessage(null);
           setMessageColor(null);
@@ -40,7 +40,7 @@ const Tasks = ({ match, logged }) => {
       .catch((e) => {
         console.log(e);
         setMessage("Folder name couldn't be loaded");
-        setMessageColor("alert-error");
+        setMessageColor('alert-error');
         setTimeout(() => {
           setMessage(null);
           setMessageColor(null);
@@ -59,7 +59,7 @@ const Tasks = ({ match, logged }) => {
           taskObject.id
         }`,
         updatedTask,
-        config
+        config,
       )
       .then(() => {
         setTasks(
@@ -69,7 +69,7 @@ const Tasks = ({ match, logged }) => {
               return task;
             }
             return task;
-          })
+          }),
         );
       })
       .catch((e) => {
@@ -88,13 +88,13 @@ const Tasks = ({ match, logged }) => {
       .post(
         `${baseApiUrl}/folders/${match.params.folderId.toString()}/tasks`,
         newTask,
-        config
+        config,
       )
       .then((res) => {
         setTasks(tasks.concat(res.data));
-        setTask("");
-        setMessage("Added Successfully");
-        setMessageColor("alert-success");
+        setTask('');
+        setMessage('Added Successfully');
+        setMessageColor('alert-success');
         setTimeout(() => {
           setMessage(null);
           setMessageColor(null);
@@ -103,7 +103,7 @@ const Tasks = ({ match, logged }) => {
       .catch((e) => {
         console.log(e);
         setMessage("Task couldn't be added");
-        setMessageColor("alert-error");
+        setMessageColor('alert-error');
         setTimeout(() => {
           setMessage(null);
           setMessageColor(null);
@@ -112,7 +112,7 @@ const Tasks = ({ match, logged }) => {
   };
 
   if (logged === false) {
-    return <Redirect to='/login' />;
+    return <Redirect to="/login" />;
   }
 
   return (
@@ -120,19 +120,19 @@ const Tasks = ({ match, logged }) => {
       <Message message={message} messageColor={messageColor} />
       <StyledTasks>
         <div>
-          <h2 className='tasks-title'>
-            <Link to='/'>Folders&nbsp; </Link>
-            {"  "}
+          <h2 className="tasks-title">
+            <Link to="/">Folders&nbsp; </Link>
+            {'  '}
             &gt; &nbsp;
             {folder.title}
           </h2>
           <ul>
             {tasks.map((task) => (
               <li key={task.id}>
-                <div className='task-checkbox'>
+                <div className="task-checkbox">
                   <input
                     id={task.name}
-                    type='checkbox'
+                    type="checkbox"
                     value={task.done}
                     checked={task.done}
                     onChange={() => {
@@ -152,21 +152,21 @@ const Tasks = ({ match, logged }) => {
               </li>
             ))}
           </ul>
-          <h4 className='add-task-title'>Add folder</h4>
-          <div className='add-task'>
+          <h4 className="add-task-title">Add folder</h4>
+          <div className="add-task">
             <input
-              type='text'
+              type="text"
               value={task}
               onChange={(e) => {
                 setTask(e.target.value);
               }}
               onKeyPress={(e) => {
-                if (e.key === "Enter") {
+                if (e.key === 'Enter') {
                   addTask();
                 }
               }}
             />
-            <button type='button' onClick={() => addTask()}>
+            <button type="button" onClick={() => addTask()}>
               Add
             </button>
           </div>
